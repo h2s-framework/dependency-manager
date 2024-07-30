@@ -1,0 +1,58 @@
+id: DependencyManager
+types:
+  \Siarko\Api\Factory\FactoryProviderInterface: \Siarko\DependencyManager\Generator\Developer\Factory\FactoryProvider
+  V\Siarko\DependencyManager\Generator\PathProvider: !new \Siarko\Paths\Provider\ProjectPathProvider
+  V\Siarko\DependencyManager\Commands\PathProvider: !new \Siarko\Paths\Provider\AbsolutePathProvider
+  # logs
+  V\SystemLogger: !new \Monolog\Logger
+  V\SystemLogger\Handler: !new \Monolog\Handler\StreamHandler
+  V\SystemLogger\PathProvider: !new \Siarko\Paths\Provider\StaticFileProjectPathProvider
+  \Psr\Log\LoggerInterface: V\SystemLogger
+  \Siarko\Api\Factory\ObjectCreatorInterface: \Siarko\DependencyManager\Generator\Developer\Factory\ObjectCreator
+
+arguments:
+  \Siarko\ConfigFiles\Modifier\ModifierManager:
+    modifiers:
+      - \Siarko\DependencyManager\Config\Init\Modifier\DirnameInjector
+      - \Siarko\DependencyManager\Config\Init\Modifier\ProjectRootInjector
+      - \Siarko\DependencyManager\Config\Init\Modifier\TypeNewTagTransformer
+      - \Siarko\DependencyManager\Config\Init\Modifier\ArgumentTypeTagTransformer
+  V\Siarko\DependencyManager\Generator\PathProvider:
+    path: generated/code
+  V\Siarko\DependencyManager\Commands\PathProvider:
+    path: __DIR__/../Commands
+  \Siarko\Paths\Provider\Pool\ScopedPathProviderPool:
+    appScopeProvider: \Siarko\DependencyManager\Paths\Scope\AppScopeProvider
+  \Siarko\Paths\Provider\Pool\PathProviderPool:
+    providers:
+      command:
+        - V\Siarko\DependencyManager\Commands\PathProvider
+  \Siarko\DependencyManager\Generator\CodeGenerator:
+    rootPathProvider: V\Siarko\DependencyManager\Generator\PathProvider
+    generators:
+      - \Siarko\DependencyManager\Generator\Developer\Factory\FactoryGenerator
+      - \Siarko\DependencyManager\Generator\Developer\Proxy\ProxyGenerator
+  \Siarko\Files\Parse\ParserManager:
+    parsers:
+      default:
+        yaml:
+          mimeTypes: [application/yaml, text/yaml]
+          parser: !type:object \Siarko\DependencyManager\Paths\Files\Parsers\YamlFileParser
+      dm_config:
+        yaml:
+          mimeTypes: [application/yaml, text/yaml],
+          parser: !type:object \Siarko\DependencyManager\Paths\Files\Parsers\YamlConfigParser
+  # Add cache to the cache manager
+  \Siarko\CacheFiles\Manager:
+    caches:
+      code: \Siarko\DependencyManager\Generator\CodeCache
+      di_config: V\Siarko\DependencyManager\Config\Cache
+  # Logs
+  V\SystemLogger\PathProvider:
+    path: var/log/system.log
+  V\SystemLogger\Handler:
+    stream: !type:provider V\SystemLogger\PathProvider::getConstructedPath
+  V\SystemLogger:
+    name: system
+    handlers:
+      - !type:object V\SystemLogger\Handler

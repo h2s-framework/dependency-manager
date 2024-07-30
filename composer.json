@@ -1,0 +1,36 @@
+{
+  "name": "siarkowodor/h2s-dependency-manager",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "version": "0.1.0",
+  "type": "library",
+  "authors": [
+    {
+      "name": "H2S",
+      "email": "mateusz@siarko.pl"
+    }
+  ],
+  "require": {
+    "ext-simplexml": "*",
+    "ext-pdo": "*",
+    "symfony/yaml": "^6.2",
+    "nette/php-generator": "^4.0",
+    "monolog/monolog": "^3.3",
+    "marcj/topsort": "^2.0",
+    "siarkowodor/h2s-utils": "*",
+    "siarkowodor/h2s-events": "*",
+    "siarkowodor/h2s-path-manager": "*",
+    "siarkowodor/serialization": "*",
+    "siarkowodor/file-abstraction": "*",
+    "siarkowodor/config-cache": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Siarko\\DependencyManager\\": "src/"
+    },
+    "files": [
+      "src/Config/boot.php"
+    ]
+  }
+}
