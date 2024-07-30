@@ -1,5 +1,5 @@
 {
-  "name": "siarkowodor/h2s-dependency-manager",
+  "name": "h2sf/dependency-manager",
   "description": "description",
   "minimum-stability": "stable",
   "license": "proprietary",
@@ -18,12 +18,12 @@
     "nette/php-generator": "^4.0",
     "monolog/monolog": "^3.3",
     "marcj/topsort": "^2.0",
-    "siarkowodor/h2s-utils": "*",
-    "siarkowodor/h2s-events": "*",
-    "siarkowodor/h2s-path-manager": "*",
-    "siarkowodor/serialization": "*",
-    "siarkowodor/file-abstraction": "*",
-    "siarkowodor/config-cache": "*"
+    "h2sf/utils": "*",
+    "h2sf/events": "*",
+    "h2sf/path-manager": "*",
+    "h2sf/serialization": "*",
+    "h2sf/file-abstraction": "*",
+    "h2sf/config-cache": "*"
   },
   "autoload": {
     "psr-4": {
