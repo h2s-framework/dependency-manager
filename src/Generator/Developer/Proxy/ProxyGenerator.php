@@ -16,7 +16,7 @@ use Siarko\Utils\Code\MethodStructure;
 class ProxyGenerator implements IGenerator
 {
 
-    public const SUFFIX = 'Proxy';
+    public const SUFFIX = '\\Proxy';
     const CONSTRUCTOR_NAME = '__construct';
 
     /**
@@ -134,7 +134,7 @@ class ProxyGenerator implements IGenerator
     {
         $docBlock = $method->getDocBlock();
         $result = '';
-        foreach ($docBlock->children as $child) {
+        foreach ($docBlock?->children ?? [] as $child) {
             $result .= $child . "\n";
         }
         return $result;

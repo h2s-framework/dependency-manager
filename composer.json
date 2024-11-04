@@ -3,7 +3,7 @@
   "description": "description",
   "minimum-stability": "stable",
   "license": "proprietary",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "library",
   "authors": [
     {
@@ -18,12 +18,12 @@
     "nette/php-generator": "^4.0",
     "monolog/monolog": "^3.3",
     "marcj/topsort": "^2.0",
-    "h2sf/utils": "*",
+    "h2sf/utils": "^0.1.2",
     "h2sf/events": "*",
-    "h2sf/path-manager": "*",
-    "h2sf/serialization": "*",
-    "h2sf/file-abstraction": "*",
-    "h2sf/config-cache": "*"
+    "h2sf/path-manager": "^0.1",
+    "h2sf/serialization": "^0.1",
+    "h2sf/file-abstraction": "^0.1.2",
+    "h2sf/config-cache": "^0.1"
   },
   "autoload": {
     "psr-4": {

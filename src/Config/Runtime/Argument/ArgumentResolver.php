@@ -69,7 +69,7 @@ class ArgumentResolver
             } elseif ($type instanceof SimpleType && $type->isObjectType()) {
                 $value = $objectProvider($type->getName());
             } else {
-                throw new ParameterNotConstructable("Could not construct parameter " . $parameter->getName());
+                throw new ParameterNotConstructable("Could not construct parameter \"" . $parameter->getName().'"');
             }
         }
         return $value;

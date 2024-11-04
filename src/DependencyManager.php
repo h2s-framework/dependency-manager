@@ -151,7 +151,7 @@ class DependencyManager
             throw new ClassNotInstantiable("Class is not instantiable: " . $className, $this->getCallStack());
         }
         if ($this->isOnStack($className)) {
-            throw new CircularDependencyException("Circular object dependency detected", $this->getCallStack());
+            throw new CircularDependencyException("Circular object dependency detected, requirement: ".$className, $this->getCallStack());
         }
         $this->putOnStack($className);
         if ($reflection->hasCustomConstructor()) {
