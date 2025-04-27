@@ -3,6 +3,7 @@
 namespace Siarko\DependencyManager\Paths\Files\Parsers;
 
 use Siarko\DependencyManager\Type\TypedValue;
+use Siarko\FileParserYaml\Parser\YamlFileParser;
 use Siarko\Files\Api\FileInterface;
 use Symfony\Component\Yaml\Tag\TaggedValue;
 

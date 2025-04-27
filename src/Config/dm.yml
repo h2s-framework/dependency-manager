@@ -34,13 +34,9 @@ arguments:
       - \Siarko\DependencyManager\Generator\Developer\Proxy\ProxyGenerator
   \Siarko\Files\Parse\ParserManager:
     parsers:
-      default:
-        yaml:
-          mimeTypes: [application/yaml, text/yaml]
-          parser: !type:object \Siarko\DependencyManager\Paths\Files\Parsers\YamlFileParser
       dm_config:
         yaml:
-          mimeTypes: [application/yaml, text/yaml],
+          mimeTypes: [application/yaml, text/yaml]
           parser: !type:object \Siarko\DependencyManager\Paths\Files\Parsers\YamlConfigParser
   # Add cache to the cache manager
   \Siarko\CacheFiles\Manager:

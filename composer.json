@@ -3,7 +3,7 @@
   "description": "description",
   "minimum-stability": "stable",
   "license": "proprietary",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "type": "library",
   "authors": [
     {
@@ -22,7 +22,8 @@
     "h2sf/events": "*",
     "h2sf/path-manager": "^0.1",
     "h2sf/serialization": "^0.1",
-    "h2sf/file-abstraction": "^0.1.2",
+    "h2sf/file-abstraction": "^0.2",
+    "h2sf/file-parser-yaml": "^0.1",
     "h2sf/config-cache": "^0.1"
   },
   "autoload": {

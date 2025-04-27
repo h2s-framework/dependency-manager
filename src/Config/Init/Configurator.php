@@ -80,9 +80,8 @@ class Configurator implements ConfiguratorInterface
         $config = $configProvider->fetch($appState->getAppScope());
 
         $createdInstances = $instance->stopObjectTracking();
-        if (!$cacheExists) {
-            $instance->flushInstances($createdInstances);
-        }
+        $instance->flushInstances($createdInstances);
+
         $this->applyConfig($instance, $config);
         $instance->get(CodeGenerator::class); //init code generator - it registers itself as codeloader
         return $cacheExists;
@@ -102,10 +101,12 @@ class Configurator implements ConfiguratorInterface
         /** @var CachedConfigProviderInterface $configProvider */
         /** @var CacheSetInterface $configCache */
         /** @var AppStateInterface $appState */
+        $instance->startObjectTracking();
         $appState = $instance->get(AppState::class);
         $configProvider = $instance->get(self::DM_CONFIG_CACHE_TYPE);
         $configProvider->clear($appState->getAppScope());
         $config = $configProvider->fetch($appState->getAppScope());
+        $instance->flushInstances($instance->stopObjectTracking());
 
         $this->applyConfig($instance, $config);
     }
@@ -134,7 +135,9 @@ class Configurator implements ConfiguratorInterface
     private function loadBasicConfig(DependencyManager $instance): void
     {
         $config = BootConfiguration::getConfig();
-        $this->applyConfig($instance, $config);
+        $applier = $instance->get(Applicator::class);
+        $instance->flushInstances([AliasManager::class]);
+        $applier->apply($config);
     }
 
     /**

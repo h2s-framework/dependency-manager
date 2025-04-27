@@ -8,9 +8,13 @@ use Siarko\ConfigFiles\Api\ConfigMergerInterface;
 use Siarko\ConfigFiles\Api\ConfigPlacementStrategyInterface;
 use Siarko\ConfigFiles\Api\Modifier\ModifierManagerInterface;
 use Siarko\ConfigFiles\Api\PrioritySorterInterface;
+use Siarko\ConfigFiles\Api\Provider\ConfigFileNameProviderInterface;
+use Siarko\ConfigFiles\Api\Provider\LookupScopeComparatorInterface;
 use Siarko\ConfigFiles\Modifier\ModifierManager;
 use Siarko\ConfigFiles\Placement\IdConfigPlacementStrategy;
+use Siarko\ConfigFiles\Provider\ConfigFileNameProvider;
 use Siarko\ConfigFiles\Provider\File\ScopedConfigLookup;
+use Siarko\ConfigFiles\Provider\LookupScopeComparator;
 use Siarko\ConfigFiles\Provider\ScopedProvider;
 use Siarko\ConfigFiles\Sorter\TopologicalSort;
 use Siarko\DependencyManager\Config\DMKeys;
@@ -36,6 +40,8 @@ use Siarko\Serialization\Json\JsonSerializer;
         PrioritySorterInterface::class => TopologicalSort::class,
         ConfigPlacementStrategyInterface::class => IdConfigPlacementStrategy::class,
         ConfigMergerInterface::class => ConfigMerger::class,
+        ConfigFileNameProviderInterface::class => ConfigFileNameProvider::class,
+        LookupScopeComparatorInterface::class => LookupScopeComparator::class,
         'V\Siarko\DependencyManager\Config\Cache\DirectoryProvider' =>
             new TypedType(TypedType::TYPE_NEW, ProjectPathProvider::class),
         'V\Siarko\DependencyManager\Config\Cache' =>
