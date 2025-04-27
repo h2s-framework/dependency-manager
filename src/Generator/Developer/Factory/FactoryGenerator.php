@@ -113,11 +113,7 @@ class FactoryGenerator implements IGenerator
         foreach ($this->getConstructorParameters($baseClassName) as $index => $parameter) {
             $param = $createNamedMethod->addParameter($parameter->getName());
             $this->setParamType($param, $parameter->getType());
-            if($parameter->isDefaultValueAvailable()){
-                $param->setDefaultValue($parameter->getDefaultValue());
-            }else{
-                $param->setDefaultValue(FactoryArgument::NONE);
-            }
+            $param->setDefaultValue(FactoryArgument::NONE);
         }
         $arguments = array_map(fn($p) => '"'.$p.'" => $'.$p, array_keys($createNamedMethod->getParameters()));
         $createNamedMethod->setBody('return parent::_createNamed(\\'.$baseClassName.'::class, ['.implode(',', $arguments).']);');
