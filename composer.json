@@ -17,7 +17,7 @@
     "marcj/topsort": "^2.0",
     "h2sf/boot-config": "^0.3",
     "h2sf/utils": "^0.3",
-    "h2sf/events": "^0.3",
+    "h2sf/events": "^0.4",
     "h2sf/path-manager": "^0.3",
     "h2sf/serialization": "^0.3",
     "h2sf/file-abstraction": "^0.3",

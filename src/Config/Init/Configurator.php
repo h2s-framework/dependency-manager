@@ -12,12 +12,13 @@ use Siarko\DependencyManager\Config\Init\Apply\Applicator;
 use Siarko\DependencyManager\Config\Runtime\Alias\AliasManager;
 use Siarko\DependencyManager\Config\Runtime\Argument\ArgumentResolver;
 use Siarko\DependencyManager\DependencyManager;
+use Siarko\DependencyManager\Events\DependencyManagerConfigured;
 use Siarko\DependencyManager\Exceptions\CircularDependencyException;
 use Siarko\DependencyManager\Exceptions\ClassNotInstantiable;
 use Siarko\DependencyManager\Exceptions\DmServiceException;
 use Siarko\DependencyManager\Exceptions\ParameterNotConstructable;
 use Siarko\DependencyManager\Generator\CodeGenerator;
-use Siarko\Events\EventManager;
+use Siarko\Events\EventManagerInterface;
 use Siarko\Paths\RootPath;
 use Siarko\Utils\Code\ClassStructureProvider;
 use Siarko\Utils\Exceptions\TypeCastException;
@@ -54,8 +55,8 @@ class Configurator implements ConfiguratorInterface
         if(!$loadedFromCache){ // looks like config was not cached
             $this->phaseTwoLoad($instance); //reading config again and cache it
         }
-        $eventManager = $instance->get(EventManager::class);
-        $eventManager->dispatch('h2s.dm.configured', $instance);
+        $eventManager = $instance->get(EventManagerInterface::class);
+        $eventManager->queueEvent(new DependencyManagerConfigured($instance));
     }
 
     /**
