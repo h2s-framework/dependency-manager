@@ -15,6 +15,7 @@
     "nette/php-generator": "^4.0",
     "monolog/monolog": "^3.3",
     "marcj/topsort": "^2.0",
+    "h2sf/boot-config": "^0.3",
     "h2sf/utils": "^0.3",
     "h2sf/events": "^0.3",
     "h2sf/path-manager": "^0.3",
