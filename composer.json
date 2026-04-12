@@ -11,8 +11,6 @@
     }
   ],
   "require": {
-    "ext-simplexml": "*",
-    "ext-pdo": "*",
     "symfony/yaml": "^6.2",
     "nette/php-generator": "^4.0",
     "monolog/monolog": "^3.3",
