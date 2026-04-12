@@ -145,7 +145,7 @@ class ProxyGenerator implements IGenerator
         $newParam->setNullable($parameter->allowsNull());
         $paramType = $parameter->getType();
         if ($paramType) {
-            $newParam->setType($paramType->getName());
+            $newParam->setType($paramType);
         }
     }
 
