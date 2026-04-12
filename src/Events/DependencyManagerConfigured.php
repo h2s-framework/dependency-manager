@@ -3,7 +3,7 @@
 namespace Siarko\DependencyManager\Events;
 
 use Siarko\DependencyManager\DependencyManager;
-use Siarko\Events\EventInterface;
+use Siarko\Events\Api\EventInterface;
 
 class DependencyManagerConfigured implements EventInterface
 {

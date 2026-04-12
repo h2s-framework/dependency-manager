@@ -18,7 +18,7 @@ use Siarko\DependencyManager\Exceptions\ClassNotInstantiable;
 use Siarko\DependencyManager\Exceptions\DmServiceException;
 use Siarko\DependencyManager\Exceptions\ParameterNotConstructable;
 use Siarko\DependencyManager\Generator\CodeGenerator;
-use Siarko\Events\EventManagerInterface;
+use Siarko\Events\Api\EventManagerInterface;
 use Siarko\Paths\RootPath;
 use Siarko\Utils\Code\ClassStructureProvider;
 use Siarko\Utils\Exceptions\TypeCastException;
